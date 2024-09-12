@@ -60,7 +60,7 @@ def construir_modelo(img_height, img_width, num_classes):
 
 def main():
     # Base de dados com 2 classes, desmatadas e normal
-    data_dir = r"Caminho/para/base/de/dados"
+    data_dir = r"Path/to/database"
     batch_size = 16
     img_height = 300
     img_width = 300
@@ -82,10 +82,10 @@ def main():
     model.fit(train_ds, validation_data=val_ds, epochs=epochs)
 
     # Fazer previsões
-    img_path = r'C:\Users\paulo.jesus\Desktop\floresta\floresta1.jpg'
+    img_path = r'Path/to/image/to/analyze'
     img = tf.keras.utils.load_img(img_path, target_size=(img_height, img_width))
     img_array = tf.keras.utils.img_to_array(img)
-    img_array = tf.expand_dims(img_array, 0)  # Adiciona uma dimensão de lote
+    img_array = tf.expand_dims(img_array, 0) 
 
     predictions = model.predict(img_array)
     score = tf.nn.softmax(predictions[0])
